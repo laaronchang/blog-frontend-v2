@@ -11,18 +11,21 @@ function PostsNew() {
     <div id="posts-new">
     <h1>New post</h1>
     <p>Title: <input type="text" /></p>
-    <p>Content: <input  type="text" /></p>
+    <p>Body: <input  type="text" /></p>
     <p>URL: <input type="text" /></p>
     <button>Submit</button>
   </div>
   )
 }
 
-function PostsIndex() {
+
+function PostsIndex(props) {
+  console.log(props.postTitle);
   return (
     <div id="posts-index">
     <h1>All posts</h1>
-    <h2>Lesson Learned</h2>
+    <p>The name is {props.name}</p>
+    <h2>{props.postTitle}</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <img src="https://tulipconnor.com/wp-content/uploads/2020/05/lessons-learned-i-passed-my-pmp-certification-exam-.png"></img>
     <br />
@@ -41,12 +44,22 @@ function Footer() {
   )
 }
 
+function Content() {
+  let postTitle = "test sentence";
+  
+  return (
+    <div>
+      <PostsNew />
+      <PostsIndex postTitle={postTitle} />
+    </div>
+  )
+}
+
 function App() {
   return (
     <div>
       <Header />
-      <PostsNew />
-      <PostsIndex />
+      <Content />
       <Footer />
    
     </div>
