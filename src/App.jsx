@@ -20,19 +20,45 @@ function PostsNew() {
 
 
 function PostsIndex(props) {
-  console.log(props.postTitle);
+  console.log(props);
   return (
     <div id="posts-index">
-    <h1>All posts</h1>
-    <p>The name is {props.name}</p>
-    <h2>{props.postTitle}</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <img src="https://tulipconnor.com/wp-content/uploads/2020/05/lessons-learned-i-passed-my-pmp-certification-exam-.png"></img>
-    <br />
-    <h2>Aliens?</h2>
-    <p>"I am an alien. Yeah, I keep saying I'm an alien, but nobody believes me." - Elon Musk</p>
-    <img src="https://static.miraheze.org/greatcharacterswiki/2/2d/Et.jpeg"></img>
-  </div>
+      <h1>All posts</h1>
+      {props.posts.map(post => (
+        <div className="posts">
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+          <img src={post.image_url} alt="" />
+          <br />
+          <button>More info</button>
+        </div>
+    ))}
+
+    </div>
+  )
+}
+
+function Content() {
+  let posts = [
+    {
+      id: 1,
+      title: "Lessons Learned",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image_url: "https://tulipconnor.com/wp-content/uploads/2020/05/lessons-learned-i-passed-my-pmp-certification-exam-.png",
+    },
+    {
+      id: 2,
+      title: "Aliens?",
+      body: "I am an alien. Yeah, I keep saying I'm an alien, but nobody believes me. - Elon Musk",
+      image_url: "https://static.miraheze.org/greatcharacterswiki/2/2d/Et.jpeg",
+    },
+  ];
+  
+  return (
+    <div>
+      <PostsNew />
+      <PostsIndex posts={posts} />
+    </div>
   )
 }
 
@@ -44,24 +70,12 @@ function Footer() {
   )
 }
 
-function Content() {
-  let postTitle = "test sentence";
-  
-  return (
-    <div>
-      <PostsNew />
-      <PostsIndex postTitle={postTitle} />
-    </div>
-  )
-}
-
 function App() {
   return (
     <div>
       <Header />
       <Content />
       <Footer />
-   
     </div>
   );
 }
