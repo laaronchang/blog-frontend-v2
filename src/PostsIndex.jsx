@@ -10,6 +10,7 @@ export function PostsIndex(props) {
           <img src={post.image_url} alt="" />
           <br />
           <button>More info</button>
+          <button onClick={props.onShowPost}>Show Modal</button>
         </div>
       ))}
 
