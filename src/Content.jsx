@@ -9,6 +9,7 @@ export function Content() {
   // let posts = [];
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+  const [currentPost, setCurrentPost] = useState({})
   
   //   {
   //     id: 1,
@@ -35,6 +36,7 @@ export function Content() {
   const handleShowPost = (myPost) => {
     // console.log("showing info...")
     console.log(myPost)
+    setCurrentPost(myPost)
     setIsPostsShowVisible(true);
   }
 
@@ -52,7 +54,10 @@ export function Content() {
       <button onClick={handleShowPost}>MODAL</button>
       <PostsIndex posts={posts} onShowPost={handleShowPost}/>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        TEST FOR MODAL
+        <div>
+          <p>TEST MODAL</p>
+          <p>{currentPost.title}</p>
+        </div>
       </Modal>
     </main>
   );
