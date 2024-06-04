@@ -1,5 +1,6 @@
 import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
+import { PostsShow } from "./PostsShow";
 import { useState, useEffect } from "react";
 import { Modal } from "./Modal";
 import axios from "axios";
@@ -51,15 +52,10 @@ export function Content() {
     <main>
       <PostsNew />
       <button onClick={handlePostsIndex}>Get Data</button>
-      <button onClick={handleShowPost}>MODAL</button>
+      {/* <button onClick={handleShowPost}>MODAL</button> */}
       <PostsIndex posts={posts} onShowPost={handleShowPost}/>
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <div>
-          <p>TEST MODAL</p>
-          <p>{currentPost.title}</p>
-          <p>{currentPost.body}</p>
-          <p>{currentPost.image_url}</p>
-        </div>
+        <PostsShow post={currentPost} />
       </Modal>
     </main>
   );
