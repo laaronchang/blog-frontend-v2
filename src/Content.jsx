@@ -57,6 +57,8 @@ export function Content() {
         <div>
           <p>TEST MODAL</p>
           <p>{currentPost.title}</p>
+          <p>{currentPost.body}</p>
+          <p>{currentPost.image_url}</p>
         </div>
       </Modal>
     </main>
