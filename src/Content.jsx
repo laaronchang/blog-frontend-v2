@@ -32,13 +32,14 @@ export function Content() {
       })
   }
 
-  const handleShowPost = () => {
+  const handleShowPost = (myPost) => {
     // console.log("showing info...")
+    console.log(myPost)
     setIsPostsShowVisible(true);
   }
 
   const handleClose = () => {
-    console.log("closing modal...");
+    // console.log("closing modal...");
     setIsPostsShowVisible(false);
   }
 
